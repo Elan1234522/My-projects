@@ -1,0 +1,35 @@
+SimpleDateFormat formatter = new SimpleDateFormat("hh:mm aa");
+		Date date = new Date();
+		LOGGER.info(formatter.format(date));
+
+		formatter = new SimpleDateFormat("hh");
+		String hr = formatter.format(new Date());
+
+		formatter = new SimpleDateFormat("mm");
+		String mint = formatter.format(new Date());
+		int i = Integer.parseInt(mint);
+		int m = 4;
+		int min = i + m;
+		String mins = Integer.toString(min);
+
+		formatter = new SimpleDateFormat("aa");
+		String meridian1 = formatter.format(new Date());
+
+	HoursSelection.click();
+		CommonLibs.shortWait();
+		driver.findElement(By.xpath("//span[@class='mdc-list-item__primary-text'][contains(.,'" + hr + "')]")).click();
+		CommonLibs.shortWait();
+
+		Minute.click();
+		CommonLibs.shortWait();
+		Minute.clear();
+		CommonLibs.shortWait();
+	Minute.sendKeys(mins);
+		CommonLibs.shortWait();
+
+		driver.findElement(By.xpath("//mat-select[@name='ampm']")).click();
+		CommonLibs.shortWait();
+		driver.findElement(
+				By.xpath("//span[@class='mdc-list-item__primary-text'][contains(.,'" + meridian1.toUpperCase() + "')]"))
+				.click();
+		CommonLibs.shortWait();
